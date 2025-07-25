@@ -1,0 +1,184 @@
+{
+  "name": "@pilab/log",
+  "version": "0.0.2",
+  "description": "A powerful, Sentry-like cloud logging solution with automatic instrumentation, rich development experience, and production-ready features.",
+  "keywords": [
+    "logging",
+    "logger",
+    "error-tracking",
+    "monitoring",
+    "observability",
+    "debugging",
+    "typescript",
+    "browser",
+    "cloud-logging",
+    "instrumentation",
+    "breadcrumbs",
+    "performance",
+    "sentry-alternative"
+  ],
+  "homepage": "https://github.com/pilab-dev/log#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pilab-dev/log.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pilab-dev/log/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Paál Gyula",
+    "email": "gyula@pilab.hu",
+    "url": "https://pilab.hu"
+  },
+  "contributors": [
+    {
+      "name": "Paál Gyula",
+      "email": "gyula@pilab.hu",
+      "url": "https://pilab.hu"
+    }
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "browser": "dist/index.js",
+  "type": "commonjs",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "browser": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
+    "format:check": "prettier --check 'src/**/*.{ts,tsx,json,md}'",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "bun run clean && bun run build && bun run test",
+    "release": "np",
+    "release:patch": "np patch",
+    "release:minor": "np minor",
+    "release:major": "np major",
+    "size": "size-limit",
+    "docs": "typedoc src/index.ts --out docs --theme default",
+    "docs:serve": "serve docs",
+    "validate": "bun run typecheck && bun run lint && bun run test && bun run build"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.0",
+    "np": "^9.2.0",
+    "prettier": "^3.1.1",
+    "serve": "^14.2.1",
+    "size-limit": "^11.0.1",
+    "@size-limit/preset-small-lib": "^11.0.1",
+    "tsup": "^8.0.1",
+    "typedoc": "^0.25.4",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "50 KB"
+    },
+    {
+      "path": "dist/index.mjs",
+      "limit": "50 KB"
+    }
+  ],
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/pilab-dev"
+    },
+    {
+      "type": "paypal",
+      "url": "https://paypal.me/pilabdev"
+    }
+  ],
+  "badges": [
+    {
+      "url": "https://img.shields.io/npm/v/@pilab/log.svg",
+      "href": "https://www.npmjs.com/package/@pilab/log",
+      "description": "npm version"
+    },
+    {
+      "url": "https://img.shields.io/npm/dt/@pilab/log.svg",
+      "href": "https://www.npmjs.com/package/@pilab/log",
+      "description": "npm downloads"
+    },
+    {
+      "url": "https://img.shields.io/github/license/pilab-dev/log.svg",
+      "href": "https://github.com/pilab-dev/log/blob/main/LICENSE",
+      "description": "license"
+    },
+    {
+      "url": "https://img.shields.io/bundlephobia/minzip/@pilab/log.svg",
+      "href": "https://bundlephobia.com/package/@pilab/log",
+      "description": "bundle size"
+    }
+  ],
+  "np": {
+    "yarn": false,
+    "contents": "dist"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "dts": true,
+    "clean": true,
+    "sourcemap": true,
+    "minify": true,
+    "target": "es2020",
+    "splitting": false
+  }
+}

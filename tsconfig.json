@@ -1,0 +1,3 @@
+{
+  "extends": "@pivirt/typescript-config/base.json"
+}
